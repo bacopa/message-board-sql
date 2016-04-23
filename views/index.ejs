@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+	<!-- bootswatch DARKLY -->
+    <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css">
+    
+	<!-- bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+
+   
+    <title>Message Board</title>
+
+</head>
+
+<body>
+	<div class="wrapper">
+		
+	<div>
+		<form action="/api/messages" method="post">
+			Handle:<input type="text" name="handle" id="handle">
+			Text:<input type="text" name="text" id="text">
+			<input type='submit' value='Post'>
+		</form>
+	</div>
+
+
+	<!-- repeating div for data -->
+	<div class="row header">
+		<div class="col-xs-12">
+		    <div>
+		
+		        <div id="contactHeader">
+		            <h1 class="">Message Board</h1>
+		        </div>	
+		
+		    </div>
+		</div>	
+	</div>
+
+
+<% for (var i = 0; i < messages.length; i++ ) { %>
+	<div class="container-fluid message">
+
+		<div class="row message" id="<%= messages[i].id %>" >
+			<div class="col-xs-6"><%= messages[i].handle %></div>
+			<div class="col-xs-6"><%= messages[i].date %></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12"><%= messages[i].text %></div>
+		</div>
+		
+	</div>
+<% } %>
+
+
+	</div>
+</body>
+</html>
+
+
+<!--  
+  <div class="modal" id="newMessage" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4>New</h4>
+        </div>
+  
+        <div class="form-group" id="form-group-sty">
+
+        <form method="POST"> 
+
+          <div class="form-group">
+            <label for="handle">handle</label>
+            <input type="text" class="form-control" id="handle" placeholder="handle">
+          </div>
+
+          <div class="form-group">
+            <label for="text">text</label>
+            <input type="text" id="text">
+          </div>
+
+        </form>
+
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" id="newMessage">Post</button>
+      </div>
+      
+      </div>  closes div.form-group 
+
+    </div>
+  </div>
+</div>
+ -->
